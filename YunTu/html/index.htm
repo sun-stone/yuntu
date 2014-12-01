@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>如意云图 - Photo Station</title>
+	<script type='text/javascript' src='jqscripts'></script>
+		<style type='text/css'>
+			*{
+				margin:0 0;
+				padding:0 0;
+				font-family:'微软雅黑';
+			}
+.repo-td {
+	height: 27px;
+	font-family: verdana, tahoma, arial, helvetica, sans-serif;
+	line-height: 27px;
+	cursor:default;
+}
+
+			a{
+				text-decoration:none;
+			}
+			
+			ul{
+				list-style-type: none;
+			}
+
+			body{
+				background:#ededed;
+			}
+
+			.nav{
+				height:63px;
+				background:url('comimg?path=title_box.jpg') repeat-x center;
+			}
+
+			.common {
+				width: 940px;
+				margin: 0 auto;
+			}
+
+			.nav .nav_head .logo{
+				display: block;
+				float: left;
+				margin-top: 10px;
+				width: 112px;
+				height: 40px;
+				background: url('comimg?path=logo2.png') no-repeat center;
+			}
+
+			.nav .nav_head .logo_plugin{
+				display: block;
+				float: right;
+				margin-top: 3px;
+			}
+			
+			.navigation {
+				width: 940px;
+				height: 54px;
+				margin: 54px auto;
+				background: url('comimg?path=fast_box.png') no-repeat center;
+			}
+
+			.navigation .navigation_title {
+				color: #666;
+				padding-top: 15px;
+				padding-left: 17px;
+			}
+
+			.navigation .navigation_title a{
+				color:#666;
+			}
+
+			.demo_content{
+	width:940px;
+	min-height:450px;
+	margin:0 auto;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #e0e0e0;
+	border-bottom-color: #e0e0e0;
+	border-left-color: #e0e0e0;
+	background-color: white;
+			}
+			
+			.demo_content_bottom{
+	width:940px;
+	margin:0 auto;
+			}
+
+			.demo_content .demo_box{
+	width:380px;
+	min-height:380px;
+	margin-top:50px;
+			}
+
+			.demo_content .demo_left{
+	float:left;
+	margin-left:50px;
+	margin-bottom:20px;
+	position: relative;
+			}
+
+			.demo_content .demo_right{
+	float:right;
+	margin-right:50px;
+	position: relative;
+			}
+
+			.demo_config{
+	width:370px;
+	color:#666;
+	visibility: visible;
+			}
+
+			.demo_config ul li{
+				margin-top:20px;
+				width:260px;
+				height: 40px;
+			}
+
+			.demo_left_span{
+	display: block;
+	float:left;
+	width:100px;
+	margin-top:8px;
+			}
+
+			.demo_right_input{
+	display: block;
+	float: right;
+	width:150px;
+	height:25px;
+	margin-top: 5px;
+			}
+
+			.demo_btn{
+				display: block;
+				width:66px;
+				height:26px;
+				background: url('customimg?path=YunTu/html/button1.png');
+				/*background: url('button1.png');*/
+				text-align: center;
+			}
+
+			.demo_btn:hover{
+				background: url('customimg?path=YunTu/html/button1_click.png');	
+				/*background: url('button1_click.png');*/	
+			}
+
+			.demo_btn b{
+				display: block;
+				font-weight: 300;
+				font-size:14px;
+				color:white;
+				padding-top:2px;
+			}
+
+			
+			.author{
+	width: 125px;
+	position: absolute;
+	bottom: 20px;
+	right: 50px;
+	font-size: 14px;
+	text-align: right;
+	color: #666;
+			}
+			
+			.runstatus{
+	float:right;
+	color: #F00;
+	margin-top:110px;
+			}
+			
+			.progress{
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+			}
+
+			.start_thread,.stop_thread {
+				margin-left:15px;
+				margin-top:110px;
+				float:left;
+			}
+			
+			.btn_add {
+				margin-right:15px;
+				margin-bottom:8px;
+				float:left;
+			}
+			
+			.downloadpcapp{
+	float:left;
+	margin-left:5px;
+	margin-top: 2px;
+			}
+			
+			.downloadbox{
+				 border-color:#ccc; 
+				 border-width:1px; 
+				 border-top-style:solid;
+				 border-bottom-style:solid;
+				 border-left-style:none; 
+				 border-right-style:none; 
+				 margin-top:200px;
+				 height:68px;
+			}
+			
+		.reposlist {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-bottom-color: #CCC;
+	border-left-color: #CCC;
+}
+
+		.repos {
+	float:left;
+	padding-left:4px;
+		}
+		
+		.repos a{
+			font-weight:bold;
+			color:#666;
+		}
+		
+		.reposlogo {
+	float:left;
+	margin-top:3px;
+	margin-left:4px;
+		}
+		
+		.reposrev {
+	float:left;
+	padding-left:4px;
+	color:#999;
+		}
+		
+		.reposcmd {
+	float:right;
+	margin-top:3px;
+	margin-right:4px;
+	visibility:hidden;
+		}
+		
+		.member-login
+		{
+			width: 350px;
+			position: relative;
+		}
+
+.login
+{
+	background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.formtitle {
+	padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.top_section {
+	border-bottom: 1px solid #DDD;
+}
+.input
+{
+	border-bottom: 1px solid #DDD;
+	padding-left: 20px;
+}
+.input select
+{
+	border-bottom: 1px solid #DDD;
+	padding: 11px 11px 11px 0px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 240px;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-weight: 600;
+}
+.input input[type="text"]{
+	padding: 11px 11px 11px 0px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 220px;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-weight: 600;
+}
+.input input[type="password"] {
+	padding: 11.5px 11px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #e20000;
+	width: 83%;
+	margin: 0;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.9em;
+	font-weight: 600;
+}
+.input span {
+	vertical-align: middle;
+}
+.buttons
+{
+	padding: 0.5em 0.8em;
+}
+/*.buttons a {
+	color:#b3b3b3;
+	font-size: 0.96em;
+	text-decoration: none;
+	line-height: 12px;
+	float:left;
+	padding: 0.8em 0em;
+}*/
+
+.sign
+{
+	background: #FFF;
+	-webkit-box-shadow: 3px 3px 6px 2px #2C2C2C;
+	-moz-box-shadow: 3px 3px 6px 2px #2C2C2C;
+	box-shadow: 3px 3px 6px 2px #2C2C2C;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.sign_up
+{
+	width:500px;
+	position: relative;
+	margin: auto;
+	top:-500px;
+}
+.input-sign input[type="text"],.input-sign input[type="email"]  {
+	padding: 11px;
+	border: 1px solid #FFF;
+	line-height: 18px;
+	color: #87aa32;
+	width: 93%;
+	margin: 0;
+	font-size:0.9em;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	border-bottom: 1px solid #DDD;
+}
+.details1
+{
+	float: left;
+	width:46%;
+	border-left: 1px solid #
+}
+.details
+{
+	float: left;
+	width:46%;
+}
+.details input[type="text"],.details1 input[type="text"]
+{
+	color:#747474;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.details input[type="text"]:hover
+{
+	color:#f2871e;
+	border: 1px solid #ffd0a1;
+}
+.details1 input[type="text"]:hover
+{
+	color:#f2871e;
+	border: 1px solid #ffd0a1;
+}
+
+.clear{clear:both;}/* clear float */
+
+.div_overlay
+ {
+             display:none;
+             position: fixed;
+             top: 0%;
+             left: 0%;
+             width: 100%;
+             height: 100%;
+             background-color: black;
+             z-index:1010;
+             -moz-opacity: 0.6;
+             opacity:.60;
+             filter: alpha(opacity=60);
+ }
+ 
+        .formtitle1 {	padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.login1 {	background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+        .formtitle11 {padding: 1em;
+	line-height: 16px;
+	font-size: 1.2em;
+	color: #162a02;
+	border-bottom: 1px solid #cdcdcd;
+	background: rgb(241,241,241);
+	background: -moz-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%, rgb(237,237,237) 14%, rgb(210,210,210) 81%, rgb(205,205,205) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(241,241,241)), color-stop(14%,rgb(237,237,237)), color-stop(81%,rgb(210,210,210)), color-stop(100%,rgb(205,205,205)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	background: radial-gradient(ellipse at center,  rgb(241,241,241) 0%,rgb(237,237,237) 14%,rgb(210,210,210) 81%,rgb(205,205,205) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#cdcdcd',GradientType=1 );
+}
+.login11 {background: #FFF;
+	-webkit-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-moz-box-shadow: 3px 3px 9px 2px #4a4a4a;
+	box-shadow: 3px 3px 9px 2px #4a4a4a;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+        </style>
+        
+<script type="text/javascript">
+	function MM_swapImgRestore() { //v3.0
+	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+	}
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+		var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+		if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+		d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+	
+	function MM_swapImage() { //v3.0
+	  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+	}
+</script>
+
+
+</head>
+<body onload="MM_preloadImages('customimg?path=YunTu/html/plugin-hover.png','customimg?path=YunTu/html/windows_hover.png','customimg?path=YunTu/html/mac_hover.png','customimg?path=YunTu/html/linux_hover.png','customimg?path=YunTu/html/help_hover.png','customimg?path=YunTu/html/upgrade_hover.png')">
+<div class='nav'>
+			<div class='nav_head common'>
+				<a href='http://r.xcloud.cc' target='_blank' class='logo' title="小云官网"></a>
+                <a href='http://www.xcloud.cc/newweb/download_plugin.html' target='_blank' class='logo_plugin' title="应用商店" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image_plugin','','customimg?path=YunTu/html/plugin-hover.png',1)"><img src="customimg?path=YunTu/html/plugin-normal.png" alt="应用商店" name="Image_plugin" width="57" height="55" border="0" id="Image_plugin" /></a>
+				<span class='version'></span>
+				<a href='javascript:void(0)' id='getupdate' class='getupdate'><span class='getupdate_def'></span></a>
+				<span class='updatewords'></span>
+			</div>
+		</div>
+
+		<div class="navigation">
+			<div class="navigation_title">
+				<a href="comreturn">主页</a> >> 如意云图（Photo Station）
+                <div class="versionNum" style="float: right; margin-right:10px; color: #999;">...</div>
+		  </div>
+		</div>
+		
+		<div class="demo_content" style="position:relative;">
+        	<div style="position:absolute; right:-1px; top:0px"><img src="customimg?path=YunTu/html/cloud.png" width="942" height="157" /></div>
+		  <div class='demo_box demo_left'>
+				访问网址：<span style="color: #F00" class="urladdress">...</span></span><br>
+      <!--例如：<span style="color: #06F"><a href="http://192.168.99.1:99/yuntu" target="_blank">http://192.168.99.1:99/yuntu</a></span><br>--><br>
+      首次进入会启动安装向导。<br><br />
+<span style="color: #F00">必须首先安装并启动 &quot;Web服务器&quot; 和 &quot;数据库服务器&quot; 插件，才能进入 &quot;如意云图&quot; 安装向导。</span>
+				<div class='progress'><img src="customimg?path=YunTu/html/load.gif" width="32" height="32"></div>
+			</div>
+			<div class='demo_box demo_right demo_flag' rel='0'>
+                 <div class="downloadbox">
+                <a href="http://www.firefox.com.cn/download/" target="_blank" class='downloadpcapp' title="下载Firefox浏览器" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_windows','','customimg?path=YunTu/html/windows_hover.png',1)"><img src="customimg?path=YunTu/html/windows_normal.png" alt="下载Firefox浏览器" name="Img_dld_windows" width="64" height="64" border="0" id="Img_dld_windows" /></a>
+              <a href="http://www.google.cn/intl/zh-CN/chrome/" target="_blank" class='downloadpcapp' title="下载Chrome浏览器"  onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_mac','','customimg?path=YunTu/html/mac_hover.png',1)"><img src="customimg?path=YunTu/html/mac_normal.png" alt="下载Chrome浏览器" name="Img_dld_mac" width="64" height="64" border="0" id="Img_dld_mac" /></a>
+              <a href="http://www.opera.com/zh-cn" target="_blank" class='downloadpcapp' title="下载Opera浏览器" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_dld_linux','','customimg?path=YunTu/html/linux_hover.png',1)"><img src="customimg?path=YunTu/html/linux_normal.png" alt="下载Opera浏览器" name="Img_dld_linux" width="64" height="64" border="0" id="Img_dld_linux" /></a>
+              <a href="http://xcloud.bdmod.com/YunTu/help.html" target="_blank" class='downloadpcapp' title="帮助" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_help','','customimg?path=YunTu/html/help_hover.png',1)"><img src="customimg?path=YunTu/html/help_normal.png" alt="帮助" name="Img_help" width="64" height="64" border="0" id="Img_help" /></a>
+              <a id="upgradeTip" href="http://xcloud.bdmod.com/YunTu/" target="_blank" class='downloadpcapp' style="visibility:hidden" title="" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Img_upgrade','','customimg?path=YunTu/html/upgrade_hover.png',1)"><img src="customimg?path=YunTu/html/upgrade_normal.png" alt="升级" name="Img_upgrade" width="64" height="64" border="0" id="Img_upgrade" /></a>
+              
+              </div>
+              
+			</div>
+          <div class='author'>Sunstone<br/>
+			<a href="http://xcloud.bdmod.com/YunTu/" target="_blank">插件官网</a><br />
+            <a href="http://www.newbandeng.com/forum-95-1.html" target="_blank">联想NBD社区</a>
+        </div>
+            <div class="clear"></div>
+		</div>
+        <div class="demo_content_bottom"><div style="float:left"><img src="customimg?path=YunTu/html/box-shadows-left.png" width="298" height="14"></div><div style="float:right"><img src="customimg?path=YunTu/html/box-shadows-right.png" width="298" height="14"></div></div>
+        <div class="clear"></div>
+        
+        <!----------------------------------------------------------->
+    
+    <script type='text/javascript'>
+		var tmp = null
+		var tmp1 = null
+		var tmp2 = null
+		
+		$('.urladdress').html("<a href='http://" + window.location.host + ":99/yuntu' target='_blank' style='color:#F00'>http://" + window.location.host + ":99/yuntu");
+		
+		// get version
+		$.ajax({
+			url:'comcmd',
+			data:{cmd:'cat /opt/app/appinstalled/700 | grep plugin_VersionName | cut -d ":" -f2'},
+			dataType:'json',
+			type:'post',
+			success:function(r){
+				tmp = r.resdata.split("\n");
+				$('.versionNum').text("版本:"+tmp[0]);
+				$('.progress').hide();
+			}
+		})
+		
+		// check new version
+		$.ajax({
+			url:'comcmd',
+			data:{cmd:'/opt/app/YunTu/bin/upgrade_check.sh'},
+			dataType:'json',
+			type:'post',
+			success:function(r){
+				var tmp = r.resdata;
+				tmp = tmp.replace(/^\n+|\n+$/g,"");
+				if(tmp != "no"){
+					$('#upgradeTip').css('visibility','visible');
+					$('#upgradeTip').attr("title","有更新：" + tmp);
+				}
+			}
+		})
+		
+		</script>
+	</body>
+<!--Relevant permission is granted to Sunstone by Dragon.-->
+</html>

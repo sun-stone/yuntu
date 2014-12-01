@@ -1,0 +1,22 @@
+plugin_ID:700
+plugin_Name:如意云图
+plugin_VersionName: 1.0.1.30
+plugin_VersionCode: 01000130
+plugin_RomVersionH: 9.9.9.9
+plugin_RomVersionL: 1.0.0.7
+plugin_MobVersionH: 9.9
+plugin_MobVersionL: 1.0
+plugin_XPKGVersion: 1.0
+plugin_IntallPath: /opt/app/YunTu/
+plugin_Source: 1
+plugin_Autorun: 0
+plugin_Space: 6377795
+plugin_MD5: fc52599eebfc83e099492a6b33750567
+plugin_Info: 图片博客系统（Photo Station）
+plugin_Author:  Sunstone
+plugin_Officeapp: 0
+plugin_State: 2
+plugin_Largeicon:/opt/app/helloworld/icon/large.jpg
+plugin_Smallicon:/opt/app/helloworld/icon/small.png
+plugin_InstallDate: 2013-11-1 02:01:01
+ 

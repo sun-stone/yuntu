@@ -1,0 +1,165 @@
+#!/bin/sh
+set -x
+
+Parameter_num=$#
+Parameter_one=$1
+PathNow=`dirname $0`  #当前执行appshell的路径
+PathInstall="/opt/app"
+LastValue=
+IpkName="YunTu*.ipk"
+BinName="YunTu"
+
+#1，判断参数是否合法
+FunParamLegal()
+{
+	if [ ${Parameter_num} -ne 1 ];then
+		echo "Fail:Parameter Err."
+		exit 1
+	fi
+}
+
+#安装函数
+Install()
+{
+	local L_ExitStatus=0
+
+	#进入当前 appshell 的目录
+	cd ${PathNow}
+	
+	#查看/opt/app 目录是否存在 ,如果不存在则创建这样一个目录
+	if [ ! -d "${PathInstall}" ];then
+		mkdir -p ${PathInstall}
+	fi
+	
+	#ipk 文件存在
+	if [ -f ${IpkName} ];then
+		tar xzvf ${IpkName} -C ${PathInstall}
+		LastValue=$?
+		if [ ${LastValue} -eq 0 ];then
+			#mysql -e "create database IF NOT EXISTS blog"
+			#if [ ! -d /tmp/MySQL/data/blog ];then
+			#	echo "Fail:MySQL is NOT running."
+			#	L_ExitStatus=3
+			#else
+				#tar xzvf /opt/app/SiteBlog/etc/db.tar.gz -C /tmp/MySQL/data
+				#LastValue=$?
+				#if [ ${LastValue} -eq 0 ];then
+					usbPath=$(cat /tmp/usbdir |cut -d ' ' -f2)
+					mkdir -p ${usbPath}/wwwroot
+					tar xzvf /opt/app/YunTu/etc/www.tar.gz -C ${usbPath}/wwwroot
+					LastValue=$?
+					if [ ${LastValue} -eq 0 ];then
+						echo "Success."
+						L_ExitStatus=0
+					else
+						echo "Fail:Install www Err."
+						L_ExitStatus=3
+					fi
+				#else
+				#	echo "Fail:Install db Err."
+				#	L_ExitStatus=3
+				#fi
+			#fi
+		else
+			echo "Fail:Install Err."
+			L_ExitStatus=3
+		fi
+	else
+		echo "Fail:Install file is not exist."
+		L_ExitStatus=2
+	fi
+	cd -
+	exit ${L_ExitStatus}
+}
+
+#卸载函数
+unInstall()
+{
+	local L_ExitStatus=0
+	
+	#进入当前 appshell 的目录
+	cd ${PathNow}
+		rm  -fr ../YunTu
+	cd -
+	
+	#删除其他
+	mysql -e "drop database yuntu"
+	usbPath=$(cat /tmp/usbdir |cut -d ' ' -f2)
+	rm -rf ${usbPath}/mysql/data/yuntu
+	rm -rf ${usbPath}/wwwroot/yuntu
+	
+	exit ${L_ExitStatus}
+}
+
+#启动函数
+Start()
+{
+	local L_ExitStatus=0
+	echo "Success."
+	exit ${L_ExitStatus}
+}
+
+#停止函数
+Stop()
+{
+	local L_ExitStatus=0
+	echo "Success."
+	exit ${L_ExitStatus}
+}
+
+
+#重新启动函数
+Restart()
+{
+	local L_ExitStatus=0
+	echo "Success."
+	exit ${L_ExitStatus}
+}
+
+#查看运行状态函数
+CheckRunStatus()
+{
+	local L_ExitStatus=0
+	echo "Success."
+	exit ${L_ExitStatus}
+}
+
+#主函数
+Main()
+{
+	#安装
+	if [ "${Parameter_one}" = "install" ];then
+		Install
+	
+	#卸载
+	elif [ "${Parameter_one}" = "uninstall" ];then
+		unInstall
+	
+	#启动
+	elif [ "${Parameter_one}" = "start" ];then
+		Start
+	
+	#停止
+	elif [ "${Parameter_one}" = "stop" ];then
+		Stop	
+	
+	#重启
+	elif [ "${Parameter_one}" = "restart" ];then
+		Restart
+		
+	#查看运行状态
+	elif [ "${Parameter_one}" = "runstatus" ];then
+		CheckRunStatus
+		
+	#输入参数错误
+	else
+		echo "ERR:Parameter Err."
+		exit 1	
+	fi
+}
+
+#检查参数是否合法
+FunParamLegal
+
+#执行主函数
+Main
